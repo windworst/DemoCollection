@@ -7,7 +7,7 @@ import com.xbw.democollection.R;
 /**
  * Created by anonymous on 15-8-27.
  */
-public class DemoBActivity extends LifetimeBaseActivity{
+public class DemoActivityLifeTimeBActivity extends LifetimeBaseActivity{
     @Override
     protected String getActivityName() {
         return getLocalClassName();

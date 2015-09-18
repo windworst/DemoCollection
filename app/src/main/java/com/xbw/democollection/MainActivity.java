@@ -10,7 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.xbw.democollection.activityLifetime.DemoAActivity;
+import com.xbw.democollection.activityLifetime.DemoActivityLifeTimeAActivity;
+import com.xbw.democollection.serviceLifeTime.DemoServiceActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,11 +23,11 @@ public class MainActivity extends AppCompatActivity {
     private ListView mListView;
 
     private String[] mTitle = {
-        "Activity生命周期演示"
+        "Activity生命周期演示", "Service生命周期演示"
     };
 
     private Class[] mActivityClassList = {
-        DemoAActivity.class
+        DemoActivityLifeTimeAActivity.class, DemoServiceActivity.class
     };
 
     private List<Map<String,Object>> mData = null;

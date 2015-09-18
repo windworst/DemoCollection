@@ -16,8 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activityLifetime.DemoAActivity"/>
-        <activity android:name=".activityLifetime.DemoBActivity"/>
+        <activity android:name=".activityLifetime.DemoActivityLifeTimeAActivity"/>
+        <activity android:name=".activityLifetime.DemoActivityLifeTimeBActivity"/>
+        <activity android:name=".serviceLifeTime.DemoServiceActivity"/>
+        <service android:name=".serviceLifeTime.DemoService"/>
     </application>
 
 </manifest>

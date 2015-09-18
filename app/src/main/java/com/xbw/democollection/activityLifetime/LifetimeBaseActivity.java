@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Created by anonymous on 15-8-27.
- */
 public abstract class LifetimeBaseActivity extends Activity {
 
     private final  static String TAG = "LIFE_TIME";

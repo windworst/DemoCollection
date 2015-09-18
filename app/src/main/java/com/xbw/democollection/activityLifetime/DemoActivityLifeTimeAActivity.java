@@ -7,10 +7,7 @@ import android.widget.Button;
 
 import com.xbw.democollection.R;
 
-/**
- * Created by anonymous on 15-8-27.
- */
-public class DemoAActivity extends LifetimeBaseActivity {
+public class DemoActivityLifeTimeAActivity extends LifetimeBaseActivity {
     @Override
     protected String getActivityName() {
         return getLocalClassName();
@@ -24,7 +21,7 @@ public class DemoAActivity extends LifetimeBaseActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DemoAActivity.this,DemoBActivity.class));
+                startActivity(new Intent(DemoActivityLifeTimeAActivity.this,DemoActivityLifeTimeBActivity.class));
             }
         });
     }
