@@ -1,8 +1,10 @@
 package com.xbw.democollection;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.xbw.democollection.activityLifetime.DemoActivityLifeTimeAActivity;
+import com.xbw.democollection.layout.LayoutDemoActivity;
 import com.xbw.democollection.serviceLifeTime.DemoServiceActivity;
 
 import java.util.ArrayList;
@@ -22,19 +25,11 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView mListView;
 
-    private String[] mTitle = {
-        "Activity生命周期演示", "Service生命周期演示"
-    };
-
-    private Class[] mActivityClassList = {
-        DemoActivityLifeTimeAActivity.class, DemoServiceActivity.class
-    };
-
     private List<Map<String,Object>> mData = null;
-    private List<Map<String,Object>> getData() {
+    private List<Map<String,Object>> getData(String[] titleList) {
         if(mData == null) {
             mData = new ArrayList<>();
-            for(String title:mTitle) {
+            for(String title:titleList) {
                 Map<String,Object> map = new HashMap<>();
                 map.put("title", title);
                 mData.add(map);
@@ -42,18 +37,28 @@ public class MainActivity extends AppCompatActivity {
         }
         return mData;
     }
+    String[] titleList = {
+            "Activity生命周期演示", "Service生命周期演示", "Intent演示", "Layout演示"
+    };
+    Intent[] intentList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        intentList = new Intent[]{
+                new Intent(MainActivity.this, DemoActivityLifeTimeAActivity.class),
+                new Intent(MainActivity.this, DemoServiceActivity.class),
+                new Intent(Intent.ACTION_CALL , Uri.parse("tel:" + 1111111)),
+                new Intent(MainActivity.this, LayoutDemoActivity.class)
+        };
         mListView = (ListView) findViewById(R.id.listView);
-        mListView.setAdapter(new SimpleAdapter(this,getData(),R.layout.listview_item,new String[]{"title"}, new int[]{R.id.tv_title}));
+        mListView.setAdapter(new SimpleAdapter(this, getData(titleList), R.layout.listview_item, new String[]{"title"}, new int[]{R.id.tv_title}));
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(0<=position && position< mActivityClassList.length) {
-                    startActivity(new Intent(MainActivity.this, mActivityClassList[position]));
+                if (0 <= position && position < intentList.length && 0 < titleList.length) {
+                    startActivity(intentList[position]);
                 }
             }
         });
