@@ -30,4 +30,11 @@
         android:text="unbindService"
         android:id="@+id/buttonUnbindService"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AIDL CALL"
+        android:id="@+id/buttonAidlCall"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

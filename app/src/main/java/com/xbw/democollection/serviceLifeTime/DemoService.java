@@ -20,7 +20,11 @@ public class DemoService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         outputInfo("onBind()");
-        return null;
+        return new IDemoService.Stub() {
+            public String get() {
+                return "AIDL STRING";
+            }
+        };
     }
 
     @Override

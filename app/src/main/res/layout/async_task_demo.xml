@@ -8,5 +8,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/textViewAsyncShow"
+        android:textSize="100sp"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

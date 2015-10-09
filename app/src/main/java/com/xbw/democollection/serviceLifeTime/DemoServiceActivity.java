@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.xbw.democollection.R;
 public class DemoServiceActivity extends Activity {
     private final  static String TAG = "SERVICE_LIFE_TIME";
     private ServiceConnection mConn;
+    private IDemoService mAidlService;
 
     private void outputInfo(String info) {
         String output = "DemoServiceActivity" + " : " + info;
@@ -35,11 +37,13 @@ public class DemoServiceActivity extends Activity {
                 mConn = new ServiceConnection() {
                     @Override
                     public void onServiceConnected(ComponentName name, IBinder service) {
+                        mAidlService = IDemoService.Stub.asInterface(service);
                         outputInfo(name.toString());
                     }
 
                     @Override
                     public void onServiceDisconnected(ComponentName name) {
+                        mAidlService = null;
                         outputInfo(name.toString());
                     }
                 };
@@ -67,6 +71,20 @@ public class DemoServiceActivity extends Activity {
                 if(mConn != null) {
                     unbindService(mConn);
                     mConn = null;
+                }
+            }
+        });
+        findViewById(R.id.buttonAidlCall).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mAidlService != null) {
+                    String string = null;
+                    try {
+                        string = mAidlService.get();
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                    outputInfo(string);
                 }
             }
         });
