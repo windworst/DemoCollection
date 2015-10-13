@@ -57,4 +57,16 @@ public abstract class LifetimeBaseActivity extends Activity {
         super.onResume();
         outputInfo("onResume()");
     }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        outputInfo("onRestoreInstanceState()");
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outputInfo("onSaveInstanceState()");
+        super.onSaveInstanceState(outState);
+    }
 }

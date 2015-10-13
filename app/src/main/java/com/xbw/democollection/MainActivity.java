@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         intentList = new Intent[]{
                 new Intent(MainActivity.this, DemoActivityLifeTimeAActivity.class),
                 new Intent(MainActivity.this, DemoServiceActivity.class),
-                new Intent(Intent.ACTION_CALL , Uri.parse("tel:" + 1111111)),
+                new Intent().setData(Uri.parse("tel:" + 1111111)),
                 new Intent(MainActivity.this, LayoutDemoActivity.class),
                 new Intent(MainActivity.this, AsyncTaskDemoActivity.class)
         };
