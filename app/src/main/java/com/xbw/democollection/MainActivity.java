@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.xbw.democollection.activityLifetime.DemoActivityLifeTimeAActivity;
+import com.xbw.democollection.dialog.DialogActivity;
 import com.xbw.democollection.layout.LayoutDemoActivity;
 import com.xbw.democollection.serviceLifeTime.DemoServiceActivity;
 import com.xbw.democollection.threaddemo.AsyncTaskDemoActivity;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         return mData;
     }
     String[] titleList = {
-            "Activity生命周期演示", "Service生命周期演示", "Intent演示", "Layout演示", "AsyncTask"
+            "Activity生命周期演示", "Service生命周期演示", "Intent演示", "Layout演示", "AsyncTask", "Dialog"
     };
     Intent[] intentList = null;
 
@@ -52,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 new Intent(MainActivity.this, DemoServiceActivity.class),
                 new Intent().setData(Uri.parse("tel:" + 1111111)),
                 new Intent(MainActivity.this, LayoutDemoActivity.class),
-                new Intent(MainActivity.this, AsyncTaskDemoActivity.class)
+                new Intent(MainActivity.this, AsyncTaskDemoActivity.class),
+                new Intent(MainActivity.this, DialogActivity.class)
         };
         mListView = (ListView) findViewById(R.id.listView);
         mListView.setAdapter(new SimpleAdapter(this, getData(titleList), R.layout.listview_item, new String[]{"title"}, new int[]{R.id.tv_title}));

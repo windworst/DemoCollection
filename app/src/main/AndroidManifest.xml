@@ -24,6 +24,7 @@
         <activity android:name=".layout.LayoutActivity"/>
         <activity android:name=".layout.LayoutDemoActivity"/>
         <activity android:name=".threaddemo.AsyncTaskDemoActivity"/>
+        <activity android:name=".dialog.DialogActivity"/>
         <service android:name=".serviceLifeTime.DemoService"
             android:process=":remote">
         </service>

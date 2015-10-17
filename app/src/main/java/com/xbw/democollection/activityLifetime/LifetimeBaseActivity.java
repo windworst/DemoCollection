@@ -1,9 +1,12 @@
 package com.xbw.democollection.activityLifetime;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.xbw.democollection.R;
 
 public abstract class LifetimeBaseActivity extends Activity {
 
@@ -68,5 +71,21 @@ public abstract class LifetimeBaseActivity extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         outputInfo("onSaveInstanceState()");
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_right_in, R.anim.slide_right_out);
+    }
+
+    @Override
+    public void startActivity(Intent intent) {
+        super.startActivity(intent);
+        Activity a = this.getParent();
+        if(a!=null){
+            a.overridePendingTransition(R.anim.slide_left_in,R.anim.slide_left_out);
+        }
+        overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
     }
 }
